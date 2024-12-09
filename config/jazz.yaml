@@ -1,9 +1,9 @@
 data:
-    data_dir:         ./remi_dataset
-    train_split:      ./pickles/train_pieces.pkl
-    val_split:        ./pickles/val_pieces.pkl
-    test_split:       ./pickles/test_pieces.pkl
-    vocab_path:       ./pickles/remi_vocab.pkl
+    data_dir:         ./jazz/pickles
+    train_split:      ./jazz/meta/train_pieces.pkl
+    val_split:        ./jazz/meta/valid_pieces.pkl
+    test_split:       ./jazz/meta/test_pieces.pkl
+    vocab_path:       ./jazz/meta/remi_vocab.pkl
     max_bars:         16                 
     enc_seqlen:       128
     dec_seqlen:       1280               
@@ -27,7 +27,7 @@ model:
     pretrained_optim_path:       null
 
 training:
-    device:           cuda:0
+    device:           cpu
     ckpt_dir:         ./ckpt/enc_dec_12L-16_bars-seqlen_1280
     trained_steps:    0
     max_epochs:       1000
@@ -43,7 +43,7 @@ training:
     ckpt_interval:    50
     log_interval:     10
     val_interval:     50
-    do_argument:      True
+    do_argument:      False
 
 generate:
     temperature:                1.2

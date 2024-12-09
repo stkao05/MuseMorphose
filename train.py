@@ -218,7 +218,7 @@ def validate(model, dloader, n_rounds=8, use_attr_cls=True):
 if __name__ == "__main__":
   dset = REMIFullSongTransformerDataset(
     config['data']['data_dir'], config['data']['vocab_path'], 
-    do_augment=True, 
+    do_augment=config['training']['do_argument'], 
     model_enc_seqlen=config['data']['enc_seqlen'], 
     model_dec_seqlen=config['data']['dec_seqlen'], 
     model_max_bars=config['data']['max_bars'],
@@ -227,7 +227,7 @@ if __name__ == "__main__":
   )
   dset_val = REMIFullSongTransformerDataset(
     config['data']['data_dir'], config['data']['vocab_path'], 
-    do_augment=False, 
+    do_augment=config['training']['do_argument'], 
     model_enc_seqlen=config['data']['enc_seqlen'], 
     model_dec_seqlen=config['data']['dec_seqlen'], 
     model_max_bars=config['data']['max_bars'],
