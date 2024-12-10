@@ -3,7 +3,7 @@ data:
     train_split:      ./jazz/meta/train.pieces.pkl
     val_split:        ./jazz/meta/valid.pieces.pkl
     test_split:       ./jazz/meta/test.pieces.pkl
-    vocab_path:       ./pickles/remi_vocab.pkl
+    vocab_path:       ./pickles/remi_vocab_2.pkl
     max_bars:         16                 
     enc_seqlen:       128
     dec_seqlen:       1280               
