@@ -27,7 +27,7 @@ model:
     pretrained_optim_path:       null
 
 training:
-    device:           cpu
+    device:           cuda
     ckpt_dir:         ./ckpt/enc_dec_12L-16_bars-seqlen_1280
     trained_steps:    0
     max_epochs:       1000
