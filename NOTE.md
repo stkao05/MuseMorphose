@@ -1,7 +1,7 @@
 ## Setup jazz dataset
 
 First download jazz dataset from
-https://drive.google.com/file/d/1DL60nip8JEBhNS_Rf9k8Jz-Ukg3wdbsB/view?usp=share_link
+https://drive.google.com/file/d/1ZqZDE_S3-Aqd8YcsnYwEuY4lwabjZWUI/view?usp=share_link
 
 
 ```
