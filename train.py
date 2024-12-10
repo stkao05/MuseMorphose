@@ -1,4 +1,6 @@
 import sys, os, time
+import wandb
+
 sys.path.append('./model')
 
 from model.musemorphose import MuseMorphose
@@ -171,6 +173,13 @@ def train_model(epoch, model, dloader, dloader_val, optim, sched):
     'kldiv_raw': kl_raw_ema,
     'time': time.time() - st
   }
+
+  wandb.log({
+    'recons_loss': recons_loss_ema,
+    'kldiv_loss': kl_loss_ema,
+    'kldiv_raw': kl_raw_ema,
+  })
+
   log_epoch(
     os.path.join(ckpt_dir, 'log.txt'), log_data, is_init=not os.path.exists(os.path.join(ckpt_dir, 'log.txt'))
   )
@@ -216,6 +225,13 @@ def validate(model, dloader, n_rounds=8, use_attr_cls=True):
   return loss_rec, kl_loss_rec
 
 if __name__ == "__main__":
+
+  wandb.init(
+      project="muse",
+      config=config
+  )
+
+
   dset = REMIFullSongTransformerDataset(
     config['data']['data_dir'], config['data']['vocab_path'], 
     do_augment=config['training']['do_argument'], 
