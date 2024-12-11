@@ -134,3 +134,10 @@ def remi2midi(events, output_midi_path=None, is_full_event=False, return_first_t
     return midi_obj
   else:
     return midi_obj, temp_tempos
+
+if __name__ == '__main__':
+    filename = 'PiJAMA/remi_muse/126.mid.pkl'
+    output = f'reconstruct.mid'
+    with open(filename, 'rb') as f:
+        bar, events = pickle.load(f)
+    remi2midi(events, output_midi_path=output, is_full_event=True)
