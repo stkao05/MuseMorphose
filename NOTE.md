@@ -1,12 +1,8 @@
 ## Setup jazz dataset
 
 First download jazz dataset from
-https://drive.google.com/file/d/1h5jZPUlpsUiUeDKiFXtH6K9NKF89ZT-m/view?usp=sharing
+https://drive.google.com/file/d/16gan6L3c0SC8IbU34LeE7C_asGzUxql-/view?usp=share_link
 
-
-```
-tar xzvf jazz.tar.gz
-```
 
 The `jazz` directory contains:
 - `meta`: Metadata, such as tokenizer configuration, song mapping, etc.
