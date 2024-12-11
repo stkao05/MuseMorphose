@@ -1,3 +1,4 @@
+import argparse
 import os, pickle, random, copy
 import numpy as np
 
@@ -136,8 +137,11 @@ def remi2midi(events, output_midi_path=None, is_full_event=False, return_first_t
     return midi_obj, temp_tempos
 
 if __name__ == '__main__':
-    filename = 'PiJAMA/remi_muse/126.mid.pkl'
-    output = f'reconstruct.mid'
-    with open(filename, 'rb') as f:
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--input', type=str, default='PiJAMA/remi_muse/1.mid.pkl')
+    parser.add_argument('--output', type=str, default='reconstruct.mid')
+    args = parser.parse_args()
+
+    with open(args.input, 'rb') as f:
         bar, events = pickle.load(f)
-    remi2midi(events, output_midi_path=output, is_full_event=True)
+    remi2midi(events, output_midi_path=args.output, is_full_event=True)
