@@ -1,5 +1,6 @@
 import sys, os, time
 import wandb
+import glob
 
 sys.path.append('./model')
 
@@ -66,6 +67,11 @@ def compute_loss_ema(ema, batch_loss, decay=0.95):
     return batch_loss
   else:
     return batch_loss * (1 - decay) + ema * decay
+
+def remove_old_checkpoints(directory, pattern):
+  files = glob.glob(os.path.join(directory, pattern))
+  for f in files:
+      os.remove(f)
 
 def train_model(epoch, model, dloader, dloader_val, optim, sched):
   model.train()
@@ -147,6 +153,9 @@ def train_model(epoch, model, dloader, dloader_val, optim, sched):
       model.train()
 
     if not trained_steps % ckpt_interval:
+      remove_old_checkpoints(params_dir, 'step_*-model.pt')
+      remove_old_checkpoints(optim_dir, 'step_*-optim.pt')
+
       torch.save(model.state_dict(),
         os.path.join(params_dir, 'step_{:d}-RC_{:.3f}-KL_{:.3f}-model.pt'.format(
             trained_steps,
