@@ -1,0 +1,6 @@
+librosa
+numpy
+git+https://github.com/CPJKU/madmom
+miditoolkit
+miditok
+midi2audio
